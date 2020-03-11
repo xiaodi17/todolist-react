@@ -6,8 +6,18 @@ class TodoItem extends Component {
     this.handleClick = this.handleClick.bind(this) //undefine 'this' keyword without bind(this)
   }
 
+  //avoid child component update every time when parent changes
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.content !== this.props.content) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   render() {
-    return <div onClick={this.handleClick}>{this.props.content}</div>
+    const { content } = this.props
+    return <div onClick={this.handleClick}>{content}</div>
   }
 
   handleClick() {
