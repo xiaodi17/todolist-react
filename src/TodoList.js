@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import TodoItem from './TodoItem'
+import 'antd/dist/antd.css'
+import { Input, Button, List } from 'antd'
 class TodoList extends Component {
   constructor(props) {
     super(props)
@@ -14,16 +16,24 @@ class TodoList extends Component {
   render() {
     return (
       <Fragment>
-        <div>
-          <label htmlFor="insertArea">Enter</label>
-          <input
+        <div style={{ marginTop: '10px', marginLeft: '10px' }}>
+          <Input
+            placeholder="todo info"
+            style={{ width: '300px', marginRight: '10px' }}
             id="insertArea"
             value={this.state.inputValue}
             onChange={this.handleInputChange}
           />
-          <button onClick={this.handleBtnClick}>submit</button>
+          <Button type="primary" onClick={this.handleBtnClick}>
+            submit
+          </Button>
         </div>
-        <ul>{this.getTodoItem()}</ul>
+        <List
+          style={{ marginTop: '10px', marginLeft: '10px', width: '300px' }}
+          bordered
+          dataSource={this.getTodoItem()}
+          renderItem={item => <List.Item>{item}</List.Item>}
+        ></List>
       </Fragment>
     )
   }
