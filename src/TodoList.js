@@ -8,20 +8,14 @@ class TodoList extends Component {
   // }
 
   render() {
+    const { inputValue, changeInputValue, handleClick } = this.props
     return (
       <div>
-        <input
-          value={this.props.inputValue}
-          onChange={this.props.changeInputValue}
-        ></input>
-        <button onClick={this.props.handleClick}>submit</button>
+        <input value={inputValue} onChange={changeInputValue}></input>
+        <button onClick={handleClick}>submit</button>
         <ul>
           {this.props.list.map((item, index) => {
-            return (
-              <li onClick={this.props.handleDelete(index)} key={index}>
-                {item}
-              </li>
-            )
+            return <li key={index}>{item}</li>
           })}
         </ul>
       </div>
