@@ -14,7 +14,7 @@ class TodoList extends Component {
       <div style={{ marginTop: '10px', marginLeft: '10px' }}>
         <Input
           placeholder="todo info"
-          style={{ width: '300px', marginRight: '10px' }}
+          style={{ width: '300px', marginRight: '10px', marginLeft: '10px' }}
           value={inputValue}
           onChange={changeInputValue}
         ></Input>
