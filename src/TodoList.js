@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Input, Button } from 'antd'
 import 'antd/dist/antd.css'
 class TodoList extends Component {
   // constructor(props) {
@@ -11,8 +12,12 @@ class TodoList extends Component {
     const { inputValue, changeInputValue, handleClick } = this.props
     return (
       <div>
-        <input value={inputValue} onChange={changeInputValue}></input>
-        <button onClick={handleClick}>submit</button>
+        <Input
+          size="large"
+          value={inputValue}
+          onChange={changeInputValue}
+        ></Input>
+        <Button onClick={handleClick}>submit</Button>
         <ul>
           {this.props.list.map((item, index) => {
             return (
