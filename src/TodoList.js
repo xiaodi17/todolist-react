@@ -18,7 +18,7 @@ class TodoList extends Component {
         <ul>
           {this.props.list.map((item, index) => {
             return (
-              <li onClick={this.props.handleDelete} key={index}>
+              <li onClick={this.props.handleDelete(index)} key={index}>
                 {item}
               </li>
             )
@@ -53,9 +53,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(action)
     },
 
-    handleDelete() {
+    handleDelete(index) {
       const action = {
-        type: 'delete_item'
+        type: 'delete_item',
+        index
       }
       dispatch(action)
     }
