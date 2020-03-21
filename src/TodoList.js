@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Input, Button } from 'antd'
+import { Input, Button, List } from 'antd'
 import 'antd/dist/antd.css'
 class TodoList extends Component {
   // constructor(props) {
@@ -11,25 +11,26 @@ class TodoList extends Component {
   render() {
     const { inputValue, changeInputValue, handleClick } = this.props
     return (
-      <div>
+      <div style={{ marginTop: '10px', marginLeft: '10px' }}>
         <Input
-          size="large"
+          placeholder="todo info"
+          style={{ width: '300px', marginRight: '10px' }}
           value={inputValue}
           onChange={changeInputValue}
         ></Input>
-        <Button onClick={handleClick}>submit</Button>
-        <ul>
-          {this.props.list.map((item, index) => {
-            return (
-              <li
-                key={index}
-                onClick={this.props.handleDelete.bind(this, index)}
-              >
-                {item}
-              </li>
-            )
-          })}
-        </ul>
+        <Button type="primary" onClick={handleClick}>
+          submit
+        </Button>
+        <List
+          style={{ marginTop: '10px', marginLeft: '10px', width: '300px' }}
+          bordered
+          dataSource={this.props.list}
+          renderItem={(item, index) => (
+            <List.Item onClick={this.props.handleDelete.bind(this, index)}>
+              {item}
+            </List.Item>
+          )}
+        ></List>
       </div>
     )
   }
